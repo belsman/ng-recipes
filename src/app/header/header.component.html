@@ -4,16 +4,17 @@
       <button
         type="button"
         class="navbar-toggle"
-        data-toggle="collapse"
-        data-target="#myNavbar"
+        (click)="collapsed = !collapsed"
       >
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span *ngFor="let i of [1, 2, 3]" class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Recipe Book</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <div
+      class="navbar-collapse"
+      [class.collapse]="collapsed"
+      (window:resize)="collapsed = true"
+    >
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Recipes</a></li>
         <li><a href="#">Shopping List</a></li>

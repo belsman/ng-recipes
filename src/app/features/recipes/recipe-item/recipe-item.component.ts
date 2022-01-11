@@ -12,8 +12,8 @@ export class RecipeItemComponent implements OnInit {
 
   constructor() {}
 
-  recipeClicked(recipe: Recipe) {
-    this.recipeSelected.emit(recipe);
+  recipeClicked() {
+    this.recipeSelected.emit();
   }
 
   ngOnInit(): void {}

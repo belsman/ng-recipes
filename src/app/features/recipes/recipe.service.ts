@@ -9,12 +9,20 @@ export class RecipeService {
       description: 'A simple test recipe',
       imageURL:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv7QUgLIlKoGmNlvoOQ-g-J0kTeV2efXgPVw&usqp=CAU',
+      ingredients: [
+        { name: 'lemon', amount: 1 },
+        { name: 'honey', amount: 2 },
+      ],
     },
     {
       name: 'great recipe',
       description: 'A description of the greatest recipe in the world!',
       imageURL:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv7QUgLIlKoGmNlvoOQ-g-J0kTeV2efXgPVw&usqp=CAU',
+      ingredients: [
+        { name: 'egg', amount: 4 },
+        { name: 'onion', amount: 3 },
+      ],
     },
   ];
 

@@ -16,17 +16,11 @@
       (window:resize)="collapsed = true"
     >
       <ul class="nav navbar-nav">
-        <li
-          (click)="onSelectNav('recipe')"
-          [ngClass]="{ active: selectedNav === 'recipe' }"
-        >
-          <a href="#">Recipes</a>
+        <li>
+          <a routerLink="/">Recipes</a>
         </li>
-        <li
-          (click)="onSelectNav('shopping-list')"
-          [ngClass]="{ active: selectedNav === 'shopping-list' }"
-        >
-          <a href="#">Shopping List</a>
+        <li>
+          <a routerLink="shopping-list">Shopping List</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

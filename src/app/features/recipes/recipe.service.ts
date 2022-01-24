@@ -1,10 +1,9 @@
-import { EventEmitter } from '@angular/core';
 import { Recipe } from './recipe.model';
 
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     {
+      id: 1,
       name: 'A test recipe',
       description: 'A simple test recipe',
       imageURL:
@@ -15,6 +14,7 @@ export class RecipeService {
       ],
     },
     {
+      id: 2,
       name: 'great recipe',
       description: 'A description of the greatest recipe in the world!',
       imageURL:
@@ -28,5 +28,9 @@ export class RecipeService {
 
   getRecipes(): Recipe[] {
     return this.recipes.slice();
+  }
+
+  getRecipeById(recipeId: number) {
+    return this.recipes.find((recipe) => recipe.id === recipeId);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 
 import { Recipe } from '../recipe.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,9 +13,13 @@ export class RecipeListComponent implements OnInit {
   @Output() recipeSelected = new EventEmitter<Recipe>();
   recipes: Recipe[];
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService, private router: Router) {}
 
   ngOnInit(): void {
     this.recipes = this.recipeService.getRecipes();
+  }
+
+  onNewRecipe() {
+    this.router.navigate(['recipes', 'new']);
   }
 }

@@ -14,6 +14,16 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
+  getIngredientById(id: number) {
+    // Technically this is the index in the list, not the id
+    return this.ingredients[id];
+  }
+
+  updateIngredient(index: number, ingredient: Ingredient) {
+    this.ingredients[index] = ingredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
   addIngredient(ingredient: Ingredient | Ingredient[]) {
     if (Array.isArray(ingredient)) {
       this.ingredients.push(...ingredient);

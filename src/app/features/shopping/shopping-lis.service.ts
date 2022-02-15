@@ -34,17 +34,9 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
-  deleteIngredient(ingredient: Ingredient) {
-    const ingredientIndex = this.ingredients.findIndex((item) => {
-      return item.name === ingredient.name && item.amount === ingredient.amount;
-    });
+  deleteIngredient(ingredientIndex: number) {
+    this.ingredients.splice(ingredientIndex, 1);
 
-    console.log('ingredentIndex is, ', ingredientIndex);
-    console.log('ingredent is, ', ingredient);
-
-    const newIngredientList = this.ingredients.slice();
-    newIngredientList.splice(ingredientIndex, 1);
-
-    this.ingredientsChanged.next(newIngredientList);
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }

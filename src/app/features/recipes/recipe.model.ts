@@ -7,3 +7,10 @@ export interface Recipe {
   imageURL: string;
   ingredients: Ingredient[];
 }
+
+export interface NewRecipe {
+  name: string;
+  description: string;
+  imageURL: string;
+  ingredients: Ingredient[];
+}

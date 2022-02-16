@@ -1,6 +1,9 @@
-import { Recipe } from './recipe.model';
+import { Subject } from 'rxjs';
+import { NewRecipe, Recipe } from './recipe.model';
 
 export class RecipeService {
+  recipeChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
     {
       id: 1,
@@ -32,5 +35,23 @@ export class RecipeService {
 
   getRecipeById(recipeId: number) {
     return this.recipes.find((recipe) => recipe.id === recipeId);
+  }
+
+  addRecipe(recipe: NewRecipe) {
+    const newId = Math.floor(Math.random() * 1000);
+    this.recipes.push({ ...recipe, id: newId });
+    this.recipeChanged.next(this.recipes);
+  }
+
+  updateRecipe(id: number, updatedRecipe) {
+    this.recipes = this.recipes.map((recipe) => {
+      if (recipe.id === id) {
+        return { ...recipe, ...updatedRecipe };
+      } else {
+        return recipe;
+      }
+    });
+
+    this.recipeChanged.next(this.recipes);
   }
 }

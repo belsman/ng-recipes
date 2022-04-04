@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NewRecipe, Recipe } from './recipe.model';
 
+@Injectable()
 export class RecipeService {
   recipeChanged = new Subject<Recipe[]>();
 
@@ -28,6 +31,17 @@ export class RecipeService {
       ],
     },
   ];
+
+  constructor(private http: HttpClient) {}
+
+  saveRecipes() {
+    this.http
+      .put(
+        'https://delicious-app-1d909-default-rtdb.firebaseio.com/recipes.json',
+        this.recipes
+      )
+      .subscribe((results) => console.log(results));
+  }
 
   getRecipes(): Recipe[] {
     return this.recipes.slice();

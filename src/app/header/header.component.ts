@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecipeService } from '../features/recipes/recipe.service';
 
 @Component({
   selector: 'app-header',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   collapsed = true;
+
+  constructor(private recipeService: RecipeService) {}
+
+  onSaveRecipes() {
+    this.recipeService.saveRecipes();
+  }
 }

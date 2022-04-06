@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { NewRecipe, Recipe } from './recipe.model';
 
 @Injectable()
@@ -47,7 +47,7 @@ export class RecipeService {
   }
 
   fetchRecipes() {
-    this.http
+    return this.http
       .get<Recipe[]>(
         'https://delicious-app-1d909-default-rtdb.firebaseio.com/recipes.json'
       )
@@ -59,12 +59,14 @@ export class RecipeService {
               ingredients: recipe.ingredients ? recipe.ingredients : [],
             };
           });
-        })
-      )
-      .subscribe((result) => {
-        this.recipes = result;
-        this.recipeChanged.next(this.recipes);
-      });
+        }),
+        tap((result) => this.setRecipes(result))
+      );
+  }
+
+  private setRecipes(result: Recipe[]) {
+    this.recipes = result;
+    this.recipeChanged.next(this.recipes);
   }
 
   getRecipes(): Recipe[] {

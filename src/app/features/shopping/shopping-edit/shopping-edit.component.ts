@@ -44,13 +44,15 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.shoppingListService.ingredientEdit.subscribe((number) => {
-      this.ingredientIndex = number;
-      const indegredientToEdit =
-        this.shoppingListService.getIngredientById(number);
-      this.f.setValue(indegredientToEdit);
-      this.isEditMode = true;
-    });
+    this.editSubscription = this.shoppingListService.ingredientEdit.subscribe(
+      (number) => {
+        this.ingredientIndex = number;
+        const indegredientToEdit =
+          this.shoppingListService.getIngredientById(number);
+        this.f.setValue(indegredientToEdit);
+        this.isEditMode = true;
+      }
+    );
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AlertComponent } from '../shared/alert/alert.component';
 import { AuthResponseData, AuthService } from './auth.service';
 
 @Component({
@@ -13,7 +14,11 @@ export class AuthComponent {
   isLoading = false;
   errorMessage: string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
 
   onHandleError() {
     this.errorMessage = null;
@@ -45,11 +50,18 @@ export class AuthComponent {
         this.router.navigate(['/recipes']);
       },
       (errorMessage) => {
-        this.errorMessage = errorMessage;
+        //this.errorMessage = errorMessage; // We are using the programmatic dialogue
+        // hence we don't need this.
+        this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
 
     form.reset();
+  }
+
+  showErrorAlert(message: string) {
+    const alertCmpFactory =
+      this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
   }
 }

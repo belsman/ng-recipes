@@ -11,6 +11,7 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { SelectRecipeComponent } from './select-recipe/select-recipe.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,8 @@ import { SelectRecipeComponent } from './select-recipe/select-recipe.component';
   imports: [
     RouterModule,
     ReactiveFormsModule,
-    CommonModule,
     RecipesRoutingModule,
+    SharedModule,
   ],
   exports: [],
 })

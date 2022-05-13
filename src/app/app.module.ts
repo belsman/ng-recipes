@@ -15,18 +15,20 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { ShoppingModule } from './features/shopping/shopping.module';
 import { CoreModule } from './core.module';
+import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AuthComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     RecipeModule,
     ShoppingModule,
+    AuthModule,
     CoreModule,
+    SharedModule,
   ],
   bootstrap: [AppComponent],
 })

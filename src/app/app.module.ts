@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { ShoppingListComponent } from './features/shopping/shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './features/shopping/shopping-edit/shopping-edit.component';
 
-import { ShoppingListService } from './features/shopping/shopping-lis.service';
+import { ShoppingListService } from './features/shopping/shopping-list.service';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { SelectRecipeComponent } from './features/recipes/select-recipe/select-recipe.component';

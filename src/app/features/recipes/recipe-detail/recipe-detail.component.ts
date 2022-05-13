@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ShoppingListService } from '../../shopping/shopping-lis.service';
+import { ShoppingListService } from '../../shopping/shopping-list.service';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 

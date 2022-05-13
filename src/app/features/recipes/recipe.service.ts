@@ -5,7 +5,7 @@ import { exhaustMap, map, take, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NewRecipe, Recipe } from './recipe.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RecipeService {
   recipeChanged = new Subject<Recipe[]>();
 

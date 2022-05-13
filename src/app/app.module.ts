@@ -14,6 +14,7 @@ import { RecipeService } from './features/recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { ShoppingModule } from './features/shopping/shopping.module';
+import { CoreModule } from './core.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AuthComponent],
@@ -25,15 +26,7 @@ import { ShoppingModule } from './features/shopping/shopping.module';
     HttpClientModule,
     RecipeModule,
     ShoppingModule,
-  ],
-  providers: [
-    ShoppingListService,
-    RecipeService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
+    CoreModule,
   ],
   bootstrap: [AppComponent],
 })

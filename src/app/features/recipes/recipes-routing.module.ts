@@ -9,7 +9,7 @@ import { SelectRecipeComponent } from './select-recipe/select-recipe.component';
 
 const recipesRoutes: Routes = [
   {
-    path: 'recipes',
+    path: '',
     component: RecipesComponent,
     canActivate: [AuthGuard],
     children: [

@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
-    path: '',
+    path: 'recipes',
     loadChildren: () =>
       import('./features/recipes/recipes.module').then(
         (mod) => mod.RecipeModule
+      ),
+  },
+  {
+    path: 'shopping-list',
+    loadChildren: () =>
+      import('./features/shopping/shopping.module').then(
+        (mod) => mod.ShoppingModule
       ),
   },
 ];
